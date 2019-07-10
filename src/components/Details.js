@@ -5,7 +5,7 @@ import Tile from './Tile';
 
 
 export default function Details() {
-    const { configData, detailsActive, toggleDetails, currentMarker} = useContext(AppContext);
+    const { detailsActive, toggleDetails, currentMarker} = useContext(AppContext);
     const [ killDetails, setKillDetails] = useState(false);
     
     // Clear details pane when hidden
@@ -18,7 +18,7 @@ export default function Details() {
         } else {
             setKillDetails(false);
         }
-    }, [detailsActive])
+    }, [detailsActive, currentMarker])
     
     return (
         <div className="comp-details">

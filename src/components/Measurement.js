@@ -1,18 +1,10 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import RingScore from "./RingScore";
 
 export default function Measurement() {
-  const { isLoading, configData, detailsActive, toggleDetails, currentMarker } = useContext(AppContext);
-  const [sortedMeasurements, setSortedMeasurments] = useState(null);
-  const { date, status, referenceId, score, measured } = currentMarker.measurements;
+  const { configData, currentMarker } = useContext(AppContext);
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-  // Sort measurements in descending order
-//   useEffect(() => {
-//     const filteredMeasurements = currentMarker.measurements.filter(item => item.status === "ok");
-//     setSortedMeasurments(filteredMeasurements.sort(compareValues("date", "desc")));
-//   }, [currentMarker]);
 
   // Format date to D-MMM-YYYY
   const formatDate = str => {
@@ -21,24 +13,24 @@ export default function Measurement() {
   };
 
   // Sort function
-  const compareValues = (key, order = "asc") => {
-    return function(a, b) {
-      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-        // property doesn't exist on either object
-        return 0;
-      }
-      const varA = typeof a[key] === "string" ? a[key].toUpperCase() : a[key];
-      const varB = typeof b[key] === "string" ? b[key].toUpperCase() : b[key];
+//   const compareValues = (key, order = "asc") => {
+//     return function(a, b) {
+//       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+//         // property doesn't exist on either object
+//         return 0;
+//       }
+//       const varA = typeof a[key] === "string" ? a[key].toUpperCase() : a[key];
+//       const varB = typeof b[key] === "string" ? b[key].toUpperCase() : b[key];
 
-      let comparison = 0;
-      if (varA > varB) {
-        comparison = 1;
-      } else if (varA < varB) {
-        comparison = -1;
-      }
-      return order === "desc" ? comparison * -1 : comparison;
-    };
-  };
+//       let comparison = 0;
+//       if (varA > varB) {
+//         comparison = 1;
+//       } else if (varA < varB) {
+//         comparison = -1;
+//       }
+//       return order === "desc" ? comparison * -1 : comparison;
+//     };
+//   };
 
   return (
     <div className="comp-measurements">

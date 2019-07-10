@@ -6,6 +6,7 @@ body {
   background-color: rgb(5, 43, 82);
 }
 
+/* APP COMPONENT */
 .App {
   display:block;
   overflow: hidden;
@@ -19,21 +20,20 @@ body {
   transition: all 0.25s ease-in-out;
 }
 
-.details-active {
-  transform: translateX(-100%)
-}
-
+/* HEADER COMPONENT */
 .comp-header {
   padding: 20px;
 }
 
+/* REPORT COMPONENT */
 .comp-report {
-  /* display: inline-block; */
 }
 
 .report-block {
   margin-top: 40px;
 }
+
+/* DETAILS COMPONENT */
 .comp-details {
   width: 100%;
   position: absolute;
@@ -53,7 +53,11 @@ body {
   margin-bottom: 30px;
 }
 
+.details-active {
+  transform: translateX(-100%)
+}
 
+/* ELEMENTBLOCK COMPONENT */
 .comp-elementblock {
   display: flex;
   align-items: center;
@@ -76,9 +80,8 @@ body {
   font-size: 0.9rem;
 }
 
-
+/* PERCENTAGE COMPONENT */
 .comp-percentage {
-  /* justify-self: flex-end; */
   margin-left: auto;
   margin-right: 20px;
 }
@@ -93,8 +96,8 @@ body {
   color: #ccc;
 }
 
+/* RINGSCORE COMPONENT */
 .comp-ringscore {
-
 }
 
 .comp-ringscore {
@@ -108,15 +111,13 @@ body {
   height: auto;
 }
 
-
-
 .progressring {
   transition: stroke-dashoffset 0.5s;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
 }
 
-
+/* MEASUREMENTS COMPONENT */
 .comp-measurements {
 }
 
@@ -151,6 +152,7 @@ body {
   display: block;
 }
 
+/* TILE COMPONENT */
 .comp-tile {
   width: 2rem;
   height: 2rem;
@@ -162,10 +164,3 @@ body {
   width:100%;
   height: auto;
 }
-
-/* @media (min-width: 48rem) {
-  .App {
-
-  }
-
-} */

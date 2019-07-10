@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useLayoutEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { AppContext } from "../context/AppContext";
 
 export default function RingScore({ score, short, reset }) {
-  const { configData, detailsActive, getRange } = useContext(AppContext);
+  const { configData, getRange } = useContext(AppContext);
 
   const [progress, setProgress] = useState(0);
   const [range, setRange] = useState(null);
@@ -27,7 +27,7 @@ export default function RingScore({ score, short, reset }) {
         clearTimeout(timer);
       }, 500);
     }
-  }, [configData, score]);
+  }, [configData, score, getRange]);
 
   return (
     <div className="comp-ringscore">

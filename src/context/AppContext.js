@@ -92,7 +92,7 @@ const AppProvider = (props) => {
             latestB = b.latestscore;
         return latestB - latestA;
       });
-      console.log(sorted);
+
       return sorted
     }
   }

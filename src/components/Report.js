@@ -1,11 +1,11 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import Header from "./Header";
 import ElementBlock from "./ElementBlock";
 import { AppContext } from "../context/AppContext";
 
 export default function Report() {
-  const { markersData, benefitsData, configData, getRange } = useContext(AppContext);
-  console.log(getRange("optimal"));
+  const { markersData, configData, getRange } = useContext(AppContext);
+
   return (
     <div className="comp-report">
       <Header />
@@ -16,6 +16,7 @@ export default function Report() {
                     if (marker.latestscore >= 80) {
                         return <ElementBlock key={marker.id} marker={marker} configData={configData} />;
                     }
+                    return null
                 })
             }
       </div>
@@ -25,7 +26,8 @@ export default function Report() {
     	        markersData.map(marker => {
     	            if (marker.latestscore >= 40 && marker.latestscore < 80) {
     	                return <ElementBlock key={marker.id} marker={marker} configData={configData} />;
-    	            }
+                    }
+                    return null
     	        })
     	    }
     </div>
@@ -36,6 +38,7 @@ export default function Report() {
                     if (marker.latestscore < 40) {
                         return <ElementBlock key={marker.id} marker={marker} configData={configData} />;
                     }
+                    return null
                 })
             }
     </div>
