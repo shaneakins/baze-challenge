@@ -5,27 +5,22 @@ import RingScore from "./RingScore";
 export default function Measurement() {
   const { isLoading, configData, detailsActive, toggleDetails, currentMarker } = useContext(AppContext);
   const [sortedMeasurements, setSortedMeasurments] = useState(null);
-
   const { date, status, referenceId, score, measured } = currentMarker.measurements;
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  useEffect(() => {
-    const filteredMeasurements = currentMarker.measurements.filter(item => item.status === "ok")
-    setSortedMeasurments(filteredMeasurements.sort(compareValues("date", "desc")));
-    console.log(sortedMeasurements)
-  }, [currentMarker]);
+  // Sort measurements in descending order
+//   useEffect(() => {
+//     const filteredMeasurements = currentMarker.measurements.filter(item => item.status === "ok");
+//     setSortedMeasurments(filteredMeasurements.sort(compareValues("date", "desc")));
+//   }, [currentMarker]);
 
-  //   const computePercent = () => {
-  //     return  Math.max.apply(Math, measurements.map(function(obj) { return obj.score; })) || 0;
-  //   };
-
-
-
+  // Format date to D-MMM-YYYY
   const formatDate = str => {
     var date = new Date(str);
     return [date.getDate() + "-" + months[date.getMonth()], date.getFullYear()];
   };
 
+  // Sort function
   const compareValues = (key, order = "asc") => {
     return function(a, b) {
       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
@@ -47,15 +42,18 @@ export default function Measurement() {
 
   return (
     <div className="comp-measurements">
-      <h2>Historical Measurements</h2>
+      <h2>Recent Scores</h2>
       <div className="measurements-block">
-        {sortedMeasurements &&
-          sortedMeasurements.map(measurement => {
+        {currentMarker.measurements &&
+          currentMarker.measurements.map(measurement => {
             return (
               <div className="measurements-item" key={measurement.referenceId}>
-                <RingScore score={measurement.score} short={measurement.short} configData={configData} reset/>
-                <p>{Math.round(measurement.score) + "/100"}</p>
-                <p>
+                <RingScore score={measurement.score} short={measurement.short} configData={configData} reset />
+                <p className="measurements-score">
+                  {Math.floor(measurement.score)}
+                  <span> / 100</span>
+                </p>
+                <p className="measurements-date">
                   {formatDate(measurement.date)[0]}
                   <span>{formatDate(measurement.date)[1]}</span>
                 </p>

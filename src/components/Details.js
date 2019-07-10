@@ -7,9 +7,8 @@ import Tile from './Tile';
 export default function Details() {
     const { configData, detailsActive, toggleDetails, currentMarker} = useContext(AppContext);
     const [ killDetails, setKillDetails] = useState(false);
-    // const { name, short, type, info, textColor, backgroundColor, measurements, images } = currentMarker || null;
     
-
+    // Clear details pane when hidden
     useEffect(() => {
         if (currentMarker && !detailsActive) {
             const timer = setTimeout(() => {
@@ -26,8 +25,7 @@ export default function Details() {
             <button type="button" onClick={() => toggleDetails()}>BACK</button>
             { (currentMarker && !killDetails) &&
             <>            
-                <h1 style={{display:"flex",alignItems:"center"}}>{currentMarker.name}<Tile image={currentMarker.images}/></h1>
-                
+                <h1 className="details-header">{currentMarker.name}<Tile image={currentMarker.images}/></h1>
                 <Measurement/>
                 <div dangerouslySetInnerHTML={{__html: currentMarker.info }}></div>
             </> 

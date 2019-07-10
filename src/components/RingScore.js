@@ -2,11 +2,10 @@ import React, { useState, useEffect, useLayoutEffect, useContext, useRef } from 
 import { AppContext } from "../context/AppContext";
 
 export default function RingScore({ score, short, reset }) {
-  const { configData, detailsActive } = useContext(AppContext);
+  const { configData, detailsActive, getRange } = useContext(AppContext);
 
   const [progress, setProgress] = useState(0);
   const [range, setRange] = useState(null);
-  // const { radius, stroke, progress } = this.props;
   const radius = 30;
   const stroke = 6;
   const normalizedRadius = radius - stroke * 2;
@@ -20,22 +19,15 @@ export default function RingScore({ score, short, reset }) {
     if (configData) {
       const timer = setTimeout(() => {
         // Normalize invalid or missinc scores
-        const adjScore = score === undefined ? 0 : Math.round(score);
+        const adjScore = score === undefined ? 0 : Math.floor(score);
         setProgress(adjScore);
 
         // Determine which range the score falls in
-        const activeRange = configData.filter(data => score >= data.from && score < data.to);
-        setRange(activeRange[0]);
+        setRange(getRange(adjScore));
         clearTimeout(timer);
       }, 500);
     }
   }, [configData, score]);
-
-//   useEffect(() => {
-//     if (reset && detailsActive) {
-//       circleRef.current.style.strokeDashoffset = circumference;
-//     }
-//   }, [detailsActive]);
 
   return (
     <div className="comp-ringscore">

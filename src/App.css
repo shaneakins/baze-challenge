@@ -30,12 +30,27 @@ body {
 .comp-report {
   /* display: inline-block; */
 }
+
+.report-block {
+  margin-top: 40px;
+}
 .comp-details {
   width: 100%;
   position: absolute;
   left: 100%;
   top: 0;
   padding: 20px;
+  margin-bottom: 20px;
+}
+
+.comp-details button {
+  margin-bottom:35px;
+}
+
+.details-header {
+  display:flex;
+  align-items:center;
+  margin-bottom: 30px;
 }
 
 
@@ -43,13 +58,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid #ccc;
-  padding: 10px 0;
+  border-top: 1px solid #eee;
+  padding: 20px 10px;
   cursor: pointer;
 }
 
-.comp-elementblock:last-of-type {
-  border-bottom: 1px solid #ccc;
+.comp-elementblock:last-child {
+  border-bottom: 1px solid #eee;
 }
 
 .comp-elementblock text {
@@ -61,10 +76,21 @@ body {
   font-size: 0.9rem;
 }
 
+
 .comp-percentage {
   /* justify-self: flex-end; */
   margin-left: auto;
   margin-right: 20px;
+}
+
+.percentage-score {
+  color: #7fa8c4;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.percentage-score span{
+  color: #ccc;
 }
 
 .comp-ringscore {
@@ -83,6 +109,7 @@ body {
 }
 
 
+
 .progressring {
   transition: stroke-dashoffset 0.5s;
   transform: rotate(-90deg);
@@ -93,10 +120,6 @@ body {
 .comp-measurements {
 }
 
-.comp-measurements span {
-  display: block;
-}
-
 .measurements-block {
   display: flex;
   justify-content: space-between;
@@ -105,6 +128,27 @@ body {
 .measurements-item {
   text-align: center;
   margin: auto;
+}
+
+.measurements-score {
+  color: #7fa8c4;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.measurements-score span{
+  color: #ccc;
+}
+
+.measurements-date {
+  color: #333;
+  font-size: 0.8rem;
+  margin-top: 0;
+}
+
+.measurements-date span {
+  display: block;
 }
 
 .comp-tile {
